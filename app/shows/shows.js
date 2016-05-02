@@ -17,15 +17,13 @@ angular.module('myApp.shows', ['ngRoute'])
 // }]);
 .controller('ShowsCtrl', ['$scope', '$http',
     function($scope, $http) {
-        $http.jsonp('http://api.charged.fm/event/search.jsonp?callback=JSON_CALLBACK').success(function(data) {
-            console.log(data);
-            $scope.shows = data.data;
-        });
-
-        // $http.get("/app/events.json").success(function(data) {
-        //     console.log(data.data);
+        // $http.jsonp('http://api.charged.fm/event/search.jsonp?callback=JSON_CALLBACK').success(function(data) {
         //     $scope.shows = data.data;
         // });
+        $http.get("/app/events.json").success(function(data) {
+            $scope.shows = data.data;
+        });
+        $scope.text = "Hello World!";
     }]);
 // .controller('ShowsCtrl', function ($scope, $http) {
 //     $scope.foo = "bar";
@@ -38,4 +36,14 @@ angular.module('myApp.shows', ['ngRoute'])
 //             $scope.shows = json.data.data;
 //         });
 //
+// });
+// .controller('ShowsCtrl', function ($scope) {
+//     $scope.shows = [
+//         {'name': 'Nexus S',
+//             'snippet': 'Fast just got faster with Nexus S.'},
+//         {'name': 'Motorola XOOM™ with Wi-Fi',
+//             'snippet': 'The Next, Next Generation tablet.'},
+//         {'name': 'MOTOROLA XOOM™',
+//             'snippet': 'The Next, Next Generation tablet.'}
+//     ];
 // });
