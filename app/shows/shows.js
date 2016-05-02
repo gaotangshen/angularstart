@@ -17,15 +17,15 @@ angular.module('myApp.shows', ['ngRoute'])
 // }]);
 .controller('ShowsCtrl', ['$scope', '$http',
     function($scope, $http) {
-        // $http.get('http://api.charged.fm/event/search').success(function(data) {
-        //     console.log(data);
-        //     $scope.shows = data.data;
-        // });
-
-        $http.get("/app/events.json").success(function(data) {
-            console.log(data.data);
+        $http.jsonp('http://api.charged.fm/event/search.jsonp?callback=JSON_CALLBACK').success(function(data) {
+            console.log(data);
             $scope.shows = data.data;
         });
+
+        // $http.get("/app/events.json").success(function(data) {
+        //     console.log(data.data);
+        //     $scope.shows = data.data;
+        // });
     }]);
 // .controller('ShowsCtrl', function ($scope, $http) {
 //     $scope.foo = "bar";
