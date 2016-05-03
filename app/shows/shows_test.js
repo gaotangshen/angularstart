@@ -12,13 +12,14 @@ describe('myApp.shows module', function() {
         beforeEach(angular.mock.inject(function($rootScope, $controller, _$httpBackend_) {
             //setup $httpBackend(设置$httpBackend冲刷$http请求)
             $httpBackend = _$httpBackend_;
-            $httpBackend.when('GET', '/app/events.json').respond({"data":[{
-                id: 1,
-                name: 'Bob'
-            }, {
-                id: 2,
-                name: 'Jane'
-            }]});
+            $httpBackend.when('GET', '/app/events.json')
+                .respond({"data":[{
+                    id: 1,
+                    name: 'Bob'
+                }, {
+                    id: 2,
+                    name: 'Jane'
+                }]});
             //create empty scope(创建一个空的 scope)
             scope = $rootScope.$new();
 
