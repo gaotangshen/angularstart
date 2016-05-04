@@ -41,6 +41,26 @@ config(function($stateProvider, $httpProvider, $locationProvider, $urlRouterProv
         controller: function($scope) {
           $scope.things = ["A", "Set", "Of", "Things"];
         }
+      })
+      .state('state3', {
+        url: "/state3",
+        templateUrl: "view/partials/state3.html"
+      })
+      .state('state3.list', {
+        url: "/list",
+        templateUrl: "view/partials/state3.list.html",
+        controller : function($scope, $http) {
+            // $http.jsonp('http://api.charged.fm/event/search.jsonp?callback=JSON_CALLBACK').success(function(data) {
+            //     $scope.shows = data.data;
+            // });
+            $http.get("/app/events.json").success(function(data) {
+              $scope.shows = data.data;
+            });
+            $scope.text = "Hello World!";
+          }
+        // controller: function($scope) {
+        //   $scope.things = ["A", "Set", "Of", "Things"];
+        // }
       });
   // $urlRouterProvider.html5Mode(true);
 });
